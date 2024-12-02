@@ -6,6 +6,13 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+# 安装必要的依赖
+echo "检查并安装依赖软件包..."
+yum install -y perl || {
+    echo "Perl 安装失败，请检查您的软件源配置。"
+    exit 1
+}
+
 # 内核下载地址
 KERNEL_URL="http://mirrors.coreix.net/elrepo-archive-archive/kernel/el7/x86_64/RPMS/"
 
